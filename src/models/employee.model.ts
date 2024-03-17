@@ -4,42 +4,55 @@ const employeeSchema = new mongoose.Schema({
     first_name: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
     },
     last_name: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
     },
     email: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
     },
     phone: {
         type: Number,
         required: false,
-        trim: true
+        trim: true,
     },
     guardian_phone: {
         type: Number,
         required: false,
-        trim: true
+        trim: true,
     },
     address: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
     },
     profile_pic: {
         type: String,
         required: false,
-        trim: true
-    }
+        trim: true,
+    },
+    profileLink: {
+        type: String,
+        unique: true
+    },
+    history: [
+        {
+            field: String,
+            oldValue: String,
+            newValue: String,
+            timestamp: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
 });
 
 const Employee = mongoose.model("Employee", employeeSchema);
 
 export default Employee;
-
-
